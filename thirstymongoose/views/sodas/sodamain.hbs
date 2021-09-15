@@ -1,0 +1,33 @@
+{{#if results.length}}
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-md-12 text-center'>
+                <h3 class='text-center'>Sodas</h3>
+            </div>
+        </div>
+    {{#each results}}
+        <div class='row black-border result-padding'>
+            <div class='col-md-6 text-center'>
+                <a href='/sodas/{{name}}/{{style}}'>{{name}}</a>
+            </div>
+            <div class='col-md-6 text-center'>
+                <span>{{style}}</span>
+            </div>
+        </div>
+    {{/each}}
+
+{{else}}
+    <div class='container-fluid'>
+        <div class='row text-center result-padding'>
+            <div class='col'>
+                <h3>No Sodas Yet!</h3>
+                <h4>Be the first to add one!</h4>
+            </div>
+        </div>
+{{/if}}
+        <div class='row text-center'>
+            <div class='col'>
+                <a href='/addSoda'><button class='btn btn-default btn-color'>Add Soda</button></a>
+            </div>
+        </div>
+    </div>

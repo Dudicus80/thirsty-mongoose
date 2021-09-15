@@ -1,0 +1,16 @@
+<div class='container-fluid'>
+    <div class='row text-center'>
+        <div class='col'>
+            <h3>Choose a Soda to serve at the Diner!</h3>
+        </div>
+    </div>
+    <div class='row text-center'>
+        <div class='col'>
+            {{#each sodas}}
+            <form action='/diners/{{diner}}/sodaAdded/{{id}}' method='POST' class='form-padding'>
+            <button type='submit' class='btn btn-default btn-color add-diner-form'>{{name}}</button>
+            </form>
+            {{/each}}
+        </div>
+    </div>
+</div>

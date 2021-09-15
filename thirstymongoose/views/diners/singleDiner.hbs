@@ -1,0 +1,52 @@
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col text-center'>
+            <h3 class='font-weight-bolder'>Diner:</h3>
+        </div>
+    </div>
+    <div class='row btn-color'>
+        <div class='col text-center'>
+            <h4>{{name}}</h4>
+            <h6>{{location}}</h6>
+        </div>
+    </div>
+
+    {{#if sodas.length}}
+    <div class='row'>
+        <div class='col text-center'>
+            <h5 class='font-weight-bolder'>Drinks served at this diner</h5>
+        </div>
+    </div>
+    {{#each sodas}}
+    <div class='row'>
+        <div class='col text-right'>
+            <h5 class='font-italic soda-padding'>{{{name}}}</h5>
+        </div>
+        <div class='col text-left'>
+            <form action='/deleteFromDiner/{{sodaId}}/{{id}}' method='POST'><button type='submit' class='btn btn-default btn-color add-diner-form soda-delete-button'>Stop Serving</button></form>
+        </div>
+    </div>
+    {{/each}}
+
+    {{else}}
+    <div class='row'>
+        <div class='col text-center'>
+            <h5>No Sodas being served here yet</h5>
+        </div>
+    </div>
+    {{/if}}
+
+    <div class='row'>
+        <div class='col text-center'>
+            <a href='/diners/addsoda/{{id}}'><button class='btn btn-default btn-color add-diner-form'>Add Soda</button></a>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col text-center'>
+            <form action='/delete/diner' method='POST'>
+            <input type='text' name='resultId' value='{{{id}}}' class='hidden'>
+            <button type='submit' class='btn btn-default btn-color add-diner-form delete-edit-btn'>Delete This Diner</button>
+            </form>
+        </div>
+    </div>
+</div>

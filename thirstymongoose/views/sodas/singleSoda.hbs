@@ -1,0 +1,109 @@
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-md-2 text-center col-20'>
+            <form action='/delete/soda' method='POST' >
+            <input type='text' name='resultId' value='{{id}}' class='hidden'>
+            <button type='submit' class='btn btn-default btn-color add-diner-form delete-edit-btn'>Delete</button>
+            </form>
+        </div>
+        <div class='col-md-8 text-center col-60'>
+            <h3 class=''>Soda:</h3>
+        </div>
+        <div class='col-md-2 text-center col-20'>
+            <form action='/edit/soda' method='POST' >
+            <input type='text' name='resultId' value='{{id}}' class='hidden'>
+            <button type='submit' class='btn btn-default btn-color add-diner-form delete-edit-btn'>Edit</button>
+            </form>
+        </div>
+    </div>
+    <div class='row btn-color'>
+        <div class='col-md-6 text-center'>
+            <h4>{{name}}</h4>
+            <h6>{{style}}</h6>
+        </div>
+        <div class='col-md-6 text-center'>
+            <h6 class='rating'>Average Rating</h6>
+            <fieldset class='star-rating rating-result' id='{{ratresult}}'>
+                <input class='star1' name='rating' type='radio' value='1' checked='checked'/>
+                <input class='star1' name='rating' type='radio' value='2'/>
+                <input class='star1' name='rating' type='radio' value='3'/>
+                <input class='star1' name='rating' type='radio' value='4'/>
+                <input class='star1' name='rating' type='radio' value='5'/>
+            </fieldset>
+        </div>
+    </div>
+    {{#if diners.length}}
+    <div class='row'>
+        <div class='col text-center'>
+            <h5 class='font-weight-bolder'>Served at these diners:</h5>
+        </div>
+    </div>
+    {{#each diners}}
+    <div class='row'>
+        <div class='col text-center'>
+            <h5 class='font-italic black-button btn-color'>{{name}}</h5>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class='row'>
+        <div class='col text-center'>
+            <h5>This drink is not being served in any Diners yet.</h5>
+        </div>
+    </div>
+    {{/if}}
+    <div class='row'>
+        <div class='col'>
+            <form action='/sodas/comment/{{id}}' method='POST' class='form-inline'>
+            <div class='row'>
+                <div class='col'>
+                    <h6 class='rating'>Rating</h6>
+                    <fieldset class='star-rating' id='rate-item-12345'>
+                        <input class='star' name='rating' type='radio' value='1' checked='checked'/>
+                        <input class='star' name='rating' type='radio' value='2'/>
+                        <input class='star' name='rating' type='radio' value='3'/>
+                        <input class='star' name='rating' type='radio' value='4'/>
+                        <input class='star' name='rating' type='radio' value='5'/>
+                    </fieldset>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <input type='textbox' class='black-border comment-text-box' name='userComment' id='userComment' placeholder='Comment'>
+                    <input type='textbox' class='hidden' name='soda'id='soda' value='{{name}}'>
+                    <input type='textbox' class='hidden' name='style' id='style' value='{{style}}'>
+                    <button type='submit' class='btn btn-default btn-color add-diner-form soda-delete-button'>Submit</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    {{#if comments.length}}
+    {{#each comments}}
+    <div class='row black-border-commresults'>
+        <div class='col-md-2 font-italic'>
+            <h6 class='comment-time rating rating-time'>{{created_at}}</h6>
+        </div>
+        <div class='col-md-2'>
+            <fieldset class='star-rating1 rating-result rating' id='{{rating}}'>
+                <input class='star1' name='rating' type='radio' value='1' checked='checked'/>
+                <input class='star1' name='rating' type='radio' value='2'/>
+                <input class='star1' name='rating' type='radio' value='3'/>
+                <input class='star1' name='rating' type='radio' value='4'/>
+                <input class='star1' name='rating' type='radio' value='5'/>
+            </fieldset>
+        </div>
+        <div class='col-md-10'>
+            <h6>{{content}}</h6>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class='row'>
+        <div class='col'>
+            <span>No Comments Yet</span>
+        </div>
+    </div>
+    {{/if}}
+    
+</div>
